@@ -1,6 +1,6 @@
 class BankAccount
   @@all = []
-  attr_accessor :name, :balance, :status
+  attr_accessor :balance, :status
   
   def initialize(name, balance = 1000, status = "open")
     @name = name
@@ -9,12 +9,16 @@ class BankAccount
     @@all << self
   end
   
+  def name
+    @name
+  end
+  
   def deposit(money)
     @balance += money
   end
   
   def display_balance
-    @balance
+    "Your balance is #{@balance}."
   end
   
   def valid?
