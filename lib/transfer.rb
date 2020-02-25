@@ -8,7 +8,13 @@ class Transfer
   end
   
   def valid?
-    Bank
+    BankAccount.all.select do |x|
+      if x.name == self.sender 
+        if x.balance > self.amount
+          @valid_sender = true 
+        end 
+      end 
+    end
     
 
 end
