@@ -60,6 +60,8 @@ class Transfer
       if x.name == self.sender
         if x.balance > self.amount
           x.balance -= @amount
+        else 
+          return "Transaction rejected. Please check your account balance."
         end
       end 
     end
