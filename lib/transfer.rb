@@ -59,19 +59,5 @@ class Transfer
       "Transaction wasn't executed"
     end
   end
-  #     BankAccount.all.select do |x|
-  #       if x.name == self.receiver
-  #         if x.balance > self.amount
-  #           x.balance -= @amount
-  #         end
-  #       end 
-  #     end
-  #     BankAccount.all.select do |x|
-  #       if x.name == self.sender
-  #         x.balance += @amount
-  #       end 
-  #     end
-  #   end
-  # end
 
 end
