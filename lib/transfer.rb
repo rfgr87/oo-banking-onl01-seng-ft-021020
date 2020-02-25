@@ -37,30 +37,13 @@ class Transfer
  
     
   def execute_transaction
-    if @sender.balance > self.amount
+    if self.sender.balance > self.amount
       self.receiver.balance += self.amount
       self.status = "executed"
     else 
       "Transaction rejected. Please check your account balance."
     end
   end
-    
-    # BankAccount.all.select do |x|
-    #   if x.name == self.sender
-    #     if x.balance > self.amount
-    #       x.balance -= @amount
-    #       self.status = "executed"
-    #       return "Transaction was executed"
-    #     else 
-    #       return "Transaction rejected. Please check your account balance."
-    #     end
-    #   end 
-    # end
-    # BankAccount.all.select do |x|
-    #   if x.name == self.receiver
-    #     x.balance += @amount
-    #   end 
-    # end
   
   def reverse_transfer
     if self.status == "executed"
