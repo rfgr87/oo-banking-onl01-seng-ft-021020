@@ -8,6 +8,7 @@ class Transfer
   end
   
   def valid?
+    Bank
     
 
 end
