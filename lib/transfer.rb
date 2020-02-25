@@ -7,6 +7,10 @@ class Transfer
     @amount = amount
   end
   
+  def sender
+    @sender
+  end
+  
   def valid?
     BankAccount.all.select do |x|
       if x.name == self.sender 
