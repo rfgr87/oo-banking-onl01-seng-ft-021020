@@ -19,6 +19,11 @@ class Transfer
     @status
   end
   
+  def status=(status)
+    @status = status
+  end
+    
+  
   def amount
     @amount
   end
@@ -27,7 +32,9 @@ class Transfer
     BankAccount.all.select do |x|
       if x.name == self.sender 
         if x.valid?
-          @valid_sender = true 
+          @valid_sender = true
+        else 
+          @valid_sender = false
         end 
       end
     end
@@ -36,6 +43,8 @@ class Transfer
       if x.name == self.receiver 
         if x.valid?
           @valid_receiver = true 
+        else 
+          @valid_receiver = false
         end 
       end 
     end
