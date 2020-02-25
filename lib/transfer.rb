@@ -29,31 +29,37 @@ class Transfer
   end
   
   def valid?
-    BankAccount.all.select do |x|
-      if x.name == self.sender 
-        if x.valid?
-          @valid_sender = true
-        else 
-          @valid_sender = false
-        end 
-      end
-    end
+   if self.sender.valid? && self.receiver.valid?
+     true
+   else
+     false
+   end
+ end
+   
+    # BankAccount.all.select do |x|
+    #   if x.name == self.sender 
+    #     if x.valid?
+    #       @valid_sender = true
+    #     else 
+    #       @valid_sender = false
+    #     end 
+    #   end
+    # end
     
-    BankAccount.all.select do |x|
-      if x.name == self.receiver 
-        if x.valid?
-          @valid_receiver = true 
-        else 
-          @valid_receiver = false
-        end 
-      end 
-    end
-    if @valide_receiver == true && @valid_sender == true 
-      return true 
-    else 
-      return false 
-    end 
-  end
+    # BankAccount.all.select do |x|
+    #   if x.name == self.receiver 
+    #     if x.valid?
+    #       @valid_receiver = true 
+    #     else 
+    #       @valid_receiver = false
+    #     end 
+    #   end 
+    # end
+    # if @valide_receiver == true && @valid_sender == true 
+    #   return true 
+    # else 
+    #   return false 
+    # end 
     
   def execute_transaction
     BankAccount.all.select do |x|
