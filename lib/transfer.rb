@@ -10,14 +10,14 @@ class Transfer
   def valid?
     BankAccount.all.select do |x|
       if x.name == self.sender 
-        if x.balance > self.amount
+        if x.valid?
           @valid_sender = true 
         end 
       end 
     
     BankAccount.all.select do |x|
       if x.name == self.receiver 
-        if x.status == "open"
+        if x.valid?
           @valid_receiver = true 
         end 
       end 
@@ -29,6 +29,13 @@ class Transfer
     end 
   end
     
-  
+  def execute_transaction
+    BankAccount.all.select do |x|
+      if x.name == self.sender
+        x.balance -= amount
+      end 
+    end
+    
+    
 
 end
