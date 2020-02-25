@@ -40,7 +40,7 @@ class Transfer
     if self.sender.balance > self.amount
       self.receiver.balance += self.amount
       self.sender.balance -= self.amount
-      self.status = "executed"
+      self.status = "complete"
     else 
       "Transaction rejected. Please check your account balance."
     end
@@ -51,6 +51,7 @@ class Transfer
     if self.status == "executed"
       self.sender.balance += self.amount
       self.receiver.balance -= self.amount
+      self.status = "reversed"
     else
       "Transaction wasn't executed"
     end
