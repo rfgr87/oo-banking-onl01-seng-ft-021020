@@ -13,7 +13,8 @@ class Transfer
         if x.valid?
           @valid_sender = true 
         end 
-      end 
+      end
+    end
     
     BankAccount.all.select do |x|
       if x.name == self.receiver 
