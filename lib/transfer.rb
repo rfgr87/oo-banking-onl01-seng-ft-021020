@@ -40,9 +40,9 @@ class Transfer
       end 
     end
     if @valide_receiver == true && @valid_sender == true 
-      true 
+      return true 
     else 
-      false 
+      return false 
     end 
   end
     
