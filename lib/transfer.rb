@@ -32,10 +32,33 @@ class Transfer
   def execute_transaction
     BankAccount.all.select do |x|
       if x.name == self.sender
-        x.balance -= amount
+        if x.balance > self.amount
+          x.balance -= @amount
+        end
       end 
     end
-    
+    BankAccount.all.select do |x|
+      if x.name == self.receiver
+        x.balance += @amount
+      end 
+    end
+    self.status = "executed"
+  end
+  
+  def reverse_transfer
+    BankAccount.all.select do |x|
+      if x.name == self.receiver
+        if x.balance > self.amount
+          x.balance -= @amount
+        end
+      end 
+    end
+    BankAccount.all.select do |x|
+      if x.name == self.sender
+        x.balance += @amount
+      end 
+    end
+  end
     
 
 end
