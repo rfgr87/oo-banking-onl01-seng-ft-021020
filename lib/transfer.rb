@@ -11,6 +11,18 @@ class Transfer
     @sender
   end
   
+  def receiver
+    @receiver
+  end
+  
+  def status
+    @status
+  end
+  
+  def amount
+    @amount
+  end
+  
   def valid?
     BankAccount.all.select do |x|
       if x.name == self.sender 
