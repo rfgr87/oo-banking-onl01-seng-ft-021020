@@ -60,6 +60,8 @@ class Transfer
       if x.name == self.sender
         if x.balance > self.amount
           x.balance -= @amount
+          self.status = "executed"
+          return "Transaction was executed"
         else 
           return "Transaction rejected. Please check your account balance."
         end
@@ -70,7 +72,6 @@ class Transfer
         x.balance += @amount
       end 
     end
-    self.status = "executed"
   end
   
   def reverse_transfer
